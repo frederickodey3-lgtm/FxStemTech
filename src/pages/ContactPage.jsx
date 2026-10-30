@@ -1,8 +1,43 @@
+import { useState } from 'react'
+
 const contactEmail = 'fxstemtech@gmail.com'
 const whatsappNumber = '233548083273'
 const whatsappDisplay = '+233 548 083 273'
 
 function ContactPage() {
+  const [submissionStatus, setSubmissionStatus] = useState('')
+  const [isSubmitting, setIsSubmitting] = useState(false)
+
+  async function handleSubmit(event) {
+    event.preventDefault()
+    const form = event.currentTarget
+    setIsSubmitting(true)
+    setSubmissionStatus('')
+
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body: new FormData(form),
+      })
+      const result = await response.json()
+
+      if (!response.ok || !result.success) {
+        throw new Error(result.message || 'The message could not be sent.')
+      }
+
+      form.reset()
+      setSubmissionStatus('Thanks for reaching out. Your message has been sent.')
+    } catch (error) {
+      console.error('Contact form submission failed:', error)
+      setSubmissionStatus(
+        'We could not send your message. Please try again or email us directly.',
+      )
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
   return (
     <div className="page-shell">
       <section className="page-title section-wrap">
@@ -39,11 +74,13 @@ function ContactPage() {
 
         <form
           className="contact-form"
-          action={`https://formsubmit.co/${contactEmail}`}
+          action={`https://formsubmit.co/ajax/${contactEmail}`}
           method="POST"
+          onSubmit={handleSubmit}
         >
           <input type="hidden" name="_subject" value="New FxStemTech website enquiry" />
           <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_captcha" value="false" />
           <input type="text" name="_honey" className="honeypot" tabIndex="-1" autoComplete="off" />
 
           <h2>Send us a message</h2>
@@ -86,9 +123,17 @@ function ContactPage() {
             required
           />
 
-          <button className="button button-primary form-submit" type="submit">
-            Send message <span aria-hidden="true">→</span>
+          <button className="button button-primary form-submit" type="submit" disabled={isSubmitting}>
+            {isSubmitting ? 'Sending…' : 'Send message'} <span aria-hidden="true">→</span>
           </button>
+          {submissionStatus && (
+            <p className="form-privacy" role="status" aria-live="polite">
+              {submissionStatus}{' '}
+              {submissionStatus.startsWith('We could not') && (
+                <a href={`mailto:${contactEmail}`}>Email us</a>
+              )}
+            </p>
+          )}
           <p className="form-privacy">
             By submitting, you agree that FxStemTech may reply to your enquiry
             using the email address you provided.
