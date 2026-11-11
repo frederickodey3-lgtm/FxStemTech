@@ -1,36 +1,47 @@
 const projects = [
   {
     number: '01',
-    category: 'AUTONOMOUS ROBOTICS',
-    title: 'Rover, meet the real world.',
+    category: 'HANDS-ON ELECTRONICS',
+    title: 'Small circuits. Big discoveries.',
     description:
-      'A sensor-powered rover that learns to navigate around obstacles and find its way.',
-    tag: 'Build · Code · Explore',
-    image:
-      'https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=900&q=80',
-    imageAlt: 'Robotics equipment on a workbench',
+      'Learners bring a robotics kit to life as they explore components, connections, and how things work.',
+    tag: 'Connect · Test · Learn',
+    image: '/images/electronics-workshop.png',
+    imageAlt: 'A student assembling an electronics project in a workshop',
   },
   {
     number: '02',
-    category: 'ROBOTIC ENGINEERING',
-    title: 'A little arm. Big ideas.',
+    category: 'ROBOTICS WORKSHOP',
+    title: 'Teamwork powers every build.',
     description:
-      'A programmable robotic arm brings precision, motion, and problem-solving to life.',
-    tag: 'Design · Test · Repeat',
-    image:
-      'https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=900&q=80',
-    imageAlt: 'Learners collaborating on a technology project',
+      'Students work together to assemble and test robotics projects, turning ideas into hands-on learning.',
+    tag: 'Collaborate · Build · Test',
+    image: '/images/robotics-teamwork.png',
+    imageAlt: 'Students working together with robotics kits around a table',
   },
   {
     number: '03',
-    category: 'MAKER PROJECTS',
-    title: 'Make your ideas glow.',
+    category: 'STEM OLYMPIAD',
+    title: 'A challenge for curious minds.',
     description:
-      'An interactive circuit project where code and creativity light up together.',
-    tag: 'Imagine · Connect · Create',
-    image:
-      'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80',
-    imageAlt: 'Close-up of an electronic circuit board',
+      'Students put science, technology, engineering, and math into action in the global STEM Olympiad.',
+    tag: 'Science · Tech · Engineering · Math',
+    image: '/images/stem-olympiad.png',
+    imageAlt: 'STEM Olympiad poster advertising the STEM challenge and exam dates',
+    imageFit: 'contain',
+    showNumber: false,
+  },
+  {
+    number: '04',
+    category: 'STUDENT PROJECT DEMO',
+    title: 'Ideas built to make a difference.',
+    description:
+      'A student presents a hands-on invention at a community showcase, sharing the work behind the build.',
+    tag: 'Design · Build · Present',
+    image: '/images/student-project-demo.png',
+    imageAlt: 'A student presenting a hands-on invention at a community showcase',
+    video: '/videos/student-project-demo.mp4',
+    imageFit: 'contain',
   },
 ]
 

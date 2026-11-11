@@ -415,6 +415,10 @@
   background: var(--primary-soft);
 }
 
+.project-art-contained {
+  background: #f4f8ff;
+}
+
 .project-image {
   width: 100%;
   height: 100%;
@@ -423,8 +427,25 @@
   transition: transform 220ms ease;
 }
 
+.project-image-contained {
+  object-fit: contain;
+}
+
+.project-video {
+  background: #101828;
+  object-fit: contain;
+}
+
 .project-card:hover .project-image {
   transform: scale(1.045);
+}
+
+.project-card:hover .project-image-contained {
+  transform: none;
+}
+
+.project-card:hover .project-video {
+  transform: none;
 }
 
 .project-number {

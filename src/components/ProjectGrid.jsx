@@ -7,14 +7,32 @@ function ProjectGrid() {
     <div className="project-grid">
       {projects.map((project) => (
         <article className="project-card" key={project.number}>
-          <div className="project-art">
-            <span className="project-number">{project.number} / FX LAB</span>
-            <img
-              src={project.image}
-              alt={project.imageAlt}
-              className="project-image"
-              loading="lazy"
-            />
+          <div
+            className={`project-art${project.imageFit === 'contain' ? ' project-art-contained' : ''}`}
+          >
+            {project.showNumber !== false && (
+              <span className="project-number">{project.number} / FX LAB</span>
+            )}
+            {project.video ? (
+              <video
+                className="project-image project-video"
+                controls
+                playsInline
+                preload="metadata"
+                poster={project.image}
+                aria-label={`Project video: ${project.title}`}
+              >
+                <source src={project.video} type="video/mp4" />
+                Your browser does not support embedded videos.
+              </video>
+            ) : (
+              <img
+                src={project.image}
+                alt={project.imageAlt}
+                className={`project-image${project.imageFit === 'contain' ? ' project-image-contained' : ''}`}
+                loading="lazy"
+              />
+            )}
           </div>
           <div className="project-info">
             <p className="project-category">{project.category}</p>
